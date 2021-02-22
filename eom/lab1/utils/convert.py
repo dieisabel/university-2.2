@@ -4,6 +4,7 @@ __all__ = ['convert_to_base', 'convert_to_decimal']
 from typing import Union
 
 from utils.checks import check_base
+from utils.checks import check_number
 
 
 def convert_to_base(number: int, to_base: int) -> str:
@@ -18,6 +19,7 @@ def convert_to_base(number: int, to_base: int) -> str:
 
 def convert_to_decimal(number: Union[str, int], from_base: int) -> int:
     check_base(from_base)
+    check_number(number, from_base)
     nums = [digit for digit in str(number)]
     nums.reverse()
     alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
