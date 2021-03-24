@@ -1,7 +1,7 @@
 package main;
 
-import io.Lab5Reader;
-import logic.Lab5Processor;
+import lab5.io.Lab5ArrayReader;
+import lab5.logic.Lab5ArrayProcessor;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,7 +14,7 @@ public class Main {
     }
 
     private void run() {
-        Lab5Reader reader = new Lab5Reader();
+        Lab5ArrayReader reader = new Lab5ArrayReader();
         double[] oneDimensionalArray = reader.readOneDimensionalArray("lab51.txt");
         double[][] twoDimensionalArray = reader.readTwoDimensionalArray("lab52.txt");
 
@@ -23,14 +23,12 @@ public class Main {
     }
 
     private void solution1(double[] array) {
-        Lab5Processor processor = new Lab5Processor();
-        double product = processor.process(array);
-        System.out.println("Solution 1: product = " + product);
+        Lab5ArrayProcessor processor = new Lab5ArrayProcessor();
+        processor.processArray(array);
     }
 
     private void solution2(double[][] array) {
-        Lab5Processor processor = new Lab5Processor();
-        double max = processor.process(array);
-        System.out.println("Solution 2: max = " + max);
+        Lab5ArrayProcessor processor = new Lab5ArrayProcessor();
+        processor.processArray(array);
     }
 }
