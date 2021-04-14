@@ -1,0 +1,2 @@
+1 surname name patronymic address 100 -200.0
+2 testSurname testName testPatronymic testAddress 100 -200.0
