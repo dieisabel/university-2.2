@@ -4,10 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Laboratory Work No.4");
-
-        Main main = new Main();
-        main.run();
-
+        new Main().run();
         System.out.println("END");
     }
 
@@ -17,20 +14,20 @@ public class Main {
         double start = 0.8;
         double end = 2.0;
         double step = 0.005;
-
         int size = calculateSteps(start, end, step);
-
         double[] arrayY = createArrayY(size, start, step, a, eps);
-
-        print(arrayY);
+        printMin(arrayY);
+        printMax(arrayY);
     }
 
-    public void print(double[] array) {
+    public void printMin(double[] array) {
         int min = min(array);
         System.out.println("MIN");
         System.out.println("index: " + min);
         System.out.println("value: " + array[min] + "\n");
+    }
 
+    public void printMax(double[] array) {
         int max = max(array);
         System.out.println("MAX");
         System.out.println("index: " + max);
@@ -49,7 +46,7 @@ public class Main {
     }
 
     public int calculateSteps(double start, double end, double step) {
-        return (int)((end - start) / step + 1);
+        return (int) ((end - start) / step + 1);
     }
 
     public double[] createArrayX(int size, double start, double step) {
@@ -95,11 +92,7 @@ public class Main {
     }
 
     public double mean(double[] array) {
-        double sum = 0.0;
-        for (double num : array) {
-            sum += num;
-        }
-        return sum / array.length;
+        return sum(array) / array.length;
     }
 
     public double sum(double[] array) {

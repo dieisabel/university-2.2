@@ -21,27 +21,13 @@ class MainTest {
     }
 
     @Test
-    void testFunctionFirstExpression() {
-        double x = 1.2;
-        double expected = -0.3395111;
-        double actual = main.function(x, a, eps);
-        assertEquals(expected, actual, eps);
-    }
-
-    @Test
-    void testFunctionSecondExpression() {
-        double x = 1.7;
-        double expected = 16.4963;
-        double actual = main.function(x, a, eps);
-        assertEquals(expected, actual, eps);
-    }
-
-    @Test
-    void testFunctionThirdExpression() {
-        double x = 1.9;
-        double expected = 1.06253;
-        double actual = main.function(x, a, eps);
-        assertEquals(expected, actual, eps);
+    void testFunction() {
+        double actual1 = main.function(1.2, a, eps);
+        double actual2 = main.function(1.7, a, eps);
+        double actual3 = main.function(1.9, a, eps);
+        assertEquals(-0.3395111, actual1, eps);
+        assertEquals(16.4963, actual2, eps);
+        assertEquals(1.06253, actual3, eps);
     }
 
     @Test
@@ -52,100 +38,39 @@ class MainTest {
     }
 
     @Test
-    void testCreateArrayX0() {
-        double expected = 0.8;
+    void testCreateArrayX() {
         int size = main.calculateSteps(start, end, step);
-        double actual = main.createArrayX(size, start, step)[0];
-        assertEquals(expected, actual, eps);
+        double actual1 = main.createArrayX(size, start, step)[0];
+        double actual2 = main.createArrayX(size, start, step)[180];
+        double actual3 = main.createArrayX(size, start, step)[240];
+        assertEquals(0.8, actual1, eps);
+        assertEquals(1.7, actual2, eps);
+        assertEquals(2.0, actual3, eps);
     }
 
     @Test
-    void testCreateArrayX180() {
-        double expected = 1.7;
+    void testCreateArrayY() {
         int size = main.calculateSteps(start, end, step);
-        double actual = main.createArrayX(size, start, step)[180];
-        assertEquals(expected, actual, eps);
+        double actual1 = main.createArrayY(size, start, step)[0];
+        double actual2 = main.createArrayY(size, start, step)[180];
+        double actual3 = main.createArrayY(size, start, step)[240];
+        assertEquals(-8.92, actual1, eps);
+        assertEquals(16.4963, actual2, eps);
+        assertEquals(1.07552, actual3, eps);
     }
 
     @Test
-    void testCreateArrayX240() {
-        double expected = 2.0;
-        int size = main.calculateSteps(start, end, step);
-        double actual = main.createArrayX(size, start, step)[240];
-        assertEquals(expected, actual, eps);
-    }
-
-    @Test
-    void testCreateArrayY0() {
-        double expected = -8.92;
-        int size = main.calculateSteps(start, end, step);
-        double actual = main.createArrayY(size, start, step, a, eps)[0];
-        assertEquals(expected, actual, eps);
-    }
-
-    @Test
-    void testCreateArrayY180() {
-        double expected = 16.4963;
-        int size = main.calculateSteps(start, end, step);
-        double actual = main.createArrayY(size, start, step, a, eps)[180];
-        assertEquals(expected, actual, eps);
-    }
-
-    @Test
-    void testCreateArrayY240() {
-        double expected = 1.07552;
-        int size = main.calculateSteps(start, end, step);
-        double actual = main.createArrayY(size, start, step, a, eps)[240];
-        assertEquals(expected, actual, eps);
-    }
-
-    @Test
-    void testMinX() {
-        int expected = 0;
-        int size = main.calculateSteps(start, end, step);
-        double[] array = main.createArrayX(size, start, step);
-        int actual = main.min(array);
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void testMaxX() {
-        int expected = 240;
-        int size = main.calculateSteps(start, end, step);
-        double[] array = main.createArrayX(size, start, step);
-        int actual = main.max(array);
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void testMinY() {
-        int expected = 0;
+    void testMinMax() {
         int size = main.calculateSteps(start, end, step);
         double[] array = main.createArrayY(size, start, step, a, eps);
-        int actual = main.min(array);
-        assertEquals(expected, actual);
+        int min = main.min(array);
+        int max = main.max(array);
+        assertEquals(0, min);
+        assertEquals(182, max);
     }
 
     @Test
-    void testMaxY() {
-        int expected = 182;
-        int size = main.calculateSteps(start, end, step);
-        double[] array = main.createArrayY(size, start, step, a, eps);
-        int actual = main.max(array);
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void testMeanX() {
-        double expected = 1.4;
-        int size = main.calculateSteps(start, end, step);
-        double[] array = main.createArrayX(size, start, step);
-        double actual = main.mean(array);
-        assertEquals(expected, actual, eps);
-    }
-
-    @Test
-    void testMeanY() {
+    void testMean() {
         double expected = 0.49015;
         int size = main.calculateSteps(start, end, step);
         double[] array = main.createArrayY(size, start, step, a, eps);
@@ -154,16 +79,7 @@ class MainTest {
     }
 
     @Test
-    void testSumX() {
-        double expected = 337.4;
-        int size = main.calculateSteps(start, end, step);
-        double[] array = main.createArrayX(size, start, step);
-        double actual = main.sum(array);
-        assertEquals(expected, actual, eps);
-    }
-
-    @Test
-    void testSumY() {
+    void testSum() {
         double expected = 118.1269;
         int size = main.calculateSteps(start, end, step);
         double[] array = main.createArrayY(size, start, step, a, eps);
