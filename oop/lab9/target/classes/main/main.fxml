@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
+   <center>
+       <AnchorPane prefHeight="400.0" prefWidth="600.0">
+           <TextArea fx:id="outputArea" prefHeight="401.0" prefWidth="600.0">
+            <font>
+               <Font size="16.0" />
+            </font></TextArea>
+       </AnchorPane>
+   </center>
+   <top>
+       <VBox prefHeight="36.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+           <ToolBar prefHeight="40.0" prefWidth="200.0">
+               <TextField fx:id="startField" promptText="start" />
+               <TextField fx:id="finishField" promptText="finish" />
+               <TextField fx:id="stepField" promptText="step" />
+               <Button mnemonicParsing="false" onAction="#calculate" text="calculate" />
+           </ToolBar>
+       </VBox>
+   </top>
+</BorderPane>
