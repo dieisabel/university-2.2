@@ -40,23 +40,19 @@ class MainTest {
     @Test
     void testCreateArrayX() {
         int size = main.calculateSteps(start, end, step);
-        double actual1 = main.createArrayX(size, start, step)[0];
-        double actual2 = main.createArrayX(size, start, step)[180];
-        double actual3 = main.createArrayX(size, start, step)[240];
-        assertEquals(0.8, actual1, eps);
-        assertEquals(1.7, actual2, eps);
-        assertEquals(2.0, actual3, eps);
+        double[] array = main.createArrayX(size, start, step);
+        assertEquals(0.8, array[0], eps);
+        assertEquals(1.7, array[180], eps);
+        assertEquals(2.0, array[240], eps);
     }
 
     @Test
     void testCreateArrayY() {
         int size = main.calculateSteps(start, end, step);
-        double actual1 = main.createArrayY(size, start, step)[0];
-        double actual2 = main.createArrayY(size, start, step)[180];
-        double actual3 = main.createArrayY(size, start, step)[240];
-        assertEquals(-8.92, actual1, eps);
-        assertEquals(16.4963, actual2, eps);
-        assertEquals(1.07552, actual3, eps);
+        double[] array = main.createArrayY(start, end, step, a, eps);
+        assertEquals(-8.92, array[0], eps);
+        assertEquals(16.4963, array[180], eps);
+        assertEquals(1.07552, array[240], eps);
     }
 
     @Test
