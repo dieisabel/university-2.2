@@ -11,23 +11,15 @@ import logic.TableRow;
 
 public class Controller {
 
-    @FXML
-    private TableView<TableRow> tableArea;
+    @FXML private TableView<TableRow> tableArea;
+    @FXML private TableColumn<TableRow, Integer> idColumn;
+    @FXML private TableColumn<TableRow, Integer> threadsColumn;
+    @FXML private TableColumn<TableRow, Integer> nColumn;
+    @FXML private TableColumn<TableRow, Double> resultColumn;
+    @FXML private TableColumn<TableRow, Long> timeColumn;
 
-    @FXML
-    private TableColumn<TableRow, Integer> idColumn;
-
-    @FXML
-    private TableColumn<TableRow, Double> resultColumn;
-
-    @FXML
-    private TableColumn<TableRow, Long> timeColumn;
-
-    @FXML
-    private TextField splitCount;
-
-    @FXML
-    private TextField threadsCount;
+    @FXML private TextField splitCount;
+    @FXML private TextField threadsCount;
 
     IntegralCalculator calculator;
     Integer idCounter;
@@ -45,11 +37,13 @@ public class Controller {
         double result = calculator.calculate(threadsCount);
         long finish = System.currentTimeMillis();
         long time = finish - start;
-        tableArea.getItems().add(new TableRow(++idCounter, result, time));
+        tableArea.getItems().add(new TableRow(++idCounter, n, threadsCount, result, time));
     }
 
     private void configureTableArea() {
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nColumn.setCellValueFactory(new PropertyValueFactory<>("n"));
+        threadsColumn.setCellValueFactory(new PropertyValueFactory<>("threads"));
         resultColumn.setCellValueFactory(new PropertyValueFactory<>("result"));
         timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
     }
