@@ -1,6 +1,6 @@
 package main;
 
-import lab3.Queue;
+import lab2.Queue;
 
 import java.util.Scanner;
 
